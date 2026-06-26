@@ -5,25 +5,24 @@ The pre-built image is available at the following link:
 https://hub.docker.com/r/trickykot3/todoapp
 
 2. Build Instructions
-To build the image locally, run the following command in the root directory of the project:
+Build for local use:
+
+docker build -t todoapp .
+
+Build for pushing to Docker Hub:
 
 docker build -t trickykot3/todoapp:1.0.0 .
 
-Changing the Python version:
-You can specify a different base Python version using a build argument.
-(Warning: Changing the version may cause some features to work incorrectly or break the application. The default version is set to 3.11).
-
-docker build --build-arg PYTHON_VERSION=<python_version> -t trickykot3/todoapp:1.0.0 .
-
 3. Run Instructions
-To start the container and map the required ports, use the following command:
+Run the local image:
 
-docker run -p 8080:8080 --name <your_container_name> trickykot3/todoapp:1.0.0
+docker run -p 8080:8080 --name my_todo_app todoapp
 
-Running in detached (background) mode:
-If you want to run the container in the background, add the -d flag:
+Run the image from Docker Hub:
 
-docker run -d -p 8080:8080 --name <your_container_name> trickykot3/todoapp:1.0.0
+docker run -p 8080:8080 --name my_todo_app trickykot3/todoapp:1.0.0
+
+(Note: The todoapp and trickykot3/todoapp:1.0.0 tags refer to the same build; the only difference is the naming convention for local testing vs. registry deployment.)
 
 4. Accessing the Application
 Once the container is up and running, you can access the application via your web browser at:
